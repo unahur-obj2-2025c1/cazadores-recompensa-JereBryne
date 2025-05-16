@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CazadorBase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tareas-composite-strategy</a> &gt; <a href="index.source.html" class="el_package">Cazadores</a> &gt; <span class="el_source">CazadorBase.java</span></div><h1>CazadorBase.java</h1><pre class="source lang-java linenums">package Cazadores;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
+import Profugos.IProfugo;
+import Profugos.ProfugoBase;
+
+public abstract class CazadorBase  {
+	private Integer experiencia;
+<span class="fc" id="L11">	private ArrayList&lt;IProfugo&gt; capturados = new ArrayList&lt;IProfugo&gt;();</span>
+	
+<span class="fc" id="L13">	public CazadorBase(Integer experiencia) {</span>
+<span class="fc" id="L14">		this.experiencia = experiencia;</span>
+<span class="fc" id="L15">	}</span>
+	
+	public Integer getExperiencia() {
+<span class="fc" id="L18">		return experiencia;</span>
+	}
+
+	
+	public void aumentarExperiencia(Integer experiencia) {
+<span class="fc" id="L23">		this.experiencia += experiencia;</span>
+<span class="fc" id="L24">	}</span>
+	
+	public Boolean puedeCapturar(IProfugo profugo) {
+<span class="fc bfc" id="L27" title="All 2 branches covered.">		return this.experiencia &gt; profugo.getInocencia();</span>
+	}
+	
+	public void intimidar(IProfugo profugo) {
+<span class="fc" id="L31">		profugo.disminuirInocencia();</span>
+<span class="fc" id="L32">	}</span>
+	
+	public void agregarCapturado(IProfugo capturado) {
+<span class="fc" id="L35">		this.capturados.add(capturado);</span>
+<span class="fc" id="L36">	}</span>
+	
+	public ArrayList&lt;IProfugo&gt; getCapturados(){
+<span class="fc" id="L39">		return capturados;</span>
+	}
+	
+/*	public IProfugo capturadoMasHabil() {
+		return capturados.stream().max(Comparator.comparingInt(IProfugo::getHabilidad)).orElse(new ProfugoBase(0,0,false));
+	}*/
+	
+	public Integer cantidadCapturados() {
+<span class="fc" id="L47">		return capturados.size();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

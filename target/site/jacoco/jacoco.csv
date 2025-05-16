@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+tareas-composite-strategy,Zonas,Zona,2,124,1,3,0,25,1,13,0,12
+tareas-composite-strategy,Zonas,Agencia,0,50,0,0,0,9,0,5,0,5
+tareas-composite-strategy,Profugos,ProfugoArtesMarciales,0,14,0,0,0,3,0,2,0,2
+tareas-composite-strategy,Profugos,ProfugoBase,0,53,0,0,0,16,0,8,0,8
+tareas-composite-strategy,Profugos,ProfugoDecorador,0,34,0,0,0,14,0,8,0,8
+tareas-composite-strategy,Profugos,ProfugoEntrenamientoElite,0,9,0,0,0,5,0,4,0,4
+tareas-composite-strategy,Profugos,ProfugoProteccionLegal,0,12,0,0,0,3,0,2,0,2
+tareas-composite-strategy,Cazadores,CazadorUrbano,0,25,1,3,0,6,1,4,0,3
+tareas-composite-strategy,Cazadores,CazadorRural,0,25,1,3,0,6,1,4,0,3
+tareas-composite-strategy,Cazadores,CazadorBase,0,54,0,2,0,14,0,9,0,8
+tareas-composite-strategy,Cazadores,CazadorSigiloso,0,26,1,3,0,6,1,4,0,3

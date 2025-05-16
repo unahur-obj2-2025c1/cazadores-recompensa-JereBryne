@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Zona.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tareas-composite-strategy</a> &gt; <a href="index.source.html" class="el_package">Zonas</a> &gt; <span class="el_source">Zona.java</span></div><h1>Zona.java</h1><pre class="source lang-java linenums">package Zonas;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+//import Cazadores.Cazador;
+import Cazadores.CazadorBase;
+import Profugos.IProfugo;
+
+public class Zona {
+	private String nombre;
+<span class="fc" id="L13">	private List&lt;IProfugo&gt; profugos = new ArrayList&lt;IProfugo&gt;();</span>
+	
+<span class="fc" id="L15">	public Zona(String nombre,List&lt;IProfugo&gt; profugos) {</span>
+<span class="fc" id="L16">		this.nombre = nombre;</span>
+<span class="fc" id="L17">		this.profugos = new ArrayList&lt;&gt;(profugos);</span>
+<span class="fc" id="L18">	}</span>
+	
+	public String getNombre() {
+<span class="fc" id="L21">		return this.nombre;</span>
+	}
+	
+	public List&lt;IProfugo&gt; getProfugos(){
+<span class="fc" id="L25">		return this.profugos;</span>
+	}
+	
+	public Integer cantidadProfugos() {
+<span class="fc" id="L29">		return profugos.size();</span>
+	}
+	
+	public void agregarProfugo(IProfugo profugo) {
+<span class="fc" id="L33">		profugos.add(profugo);</span>
+<span class="fc" id="L34">	}</span>
+	
+	public void realizarCaceria(CazadorBase cazador) {
+<span class="fc" id="L37">		List&lt;IProfugo&gt; capturados = new ArrayList&lt;IProfugo&gt;();</span>
+<span class="fc" id="L38">		List&lt;IProfugo&gt; intimidados = new ArrayList&lt;IProfugo&gt;();</span>
+		
+<span class="fc" id="L40">		profugos.stream().filter(p -&gt; cazador.puedeCapturar(p)).forEach(p -&gt; capturados.add(p));</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">		if (! capturados.isEmpty()) {</span>
+<span class="fc" id="L42">			this.profugos.removeAll(capturados);</span>
+		}
+		
+		
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">		profugos.stream().filter(p -&gt; ! cazador.puedeCapturar(p)).forEach(p -&gt; intimidados.add(p));</span>
+		
+<span class="fc" id="L48">		intimidados.stream().forEach(c -&gt; cazador.intimidar(c));</span>
+<span class="fc" id="L49">		Integer minHabilidadIntimidados = </span>
+<span class="fc" id="L50">				intimidados.stream()</span>
+<span class="fc" id="L51">				.map(i -&gt; i.getHabilidad())</span>
+<span class="fc" id="L52">				.filter(Objects::nonNull)</span>
+<span class="fc" id="L53">				.min(Integer::compareTo)</span>
+<span class="fc" id="L54">				.orElse(0);</span>
+<span class="fc" id="L55">		cazador.aumentarExperiencia(minHabilidadIntimidados + 2 * capturados.size());</span>
+<span class="fc" id="L56">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
